@@ -1,19 +1,36 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <el-input
+      v-model="textarea"
+      resize="none"
+      type="textarea"
+      id="myId"
+      rows="5"
+      @keyup.enter.native="sendInfo"
+    />
+    <div :style="{textAlign: 'right'}">
+      <Emoji :textAreaId="'myId'">
+        <button>表情</button>
+      </Emoji>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Emoji from "./components/Emoji/Emoji.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    Emoji,
+  },
+  data() {
+    return {
+      textarea: "",
+    };
+  },
+};
 </script>
 
 <style>
